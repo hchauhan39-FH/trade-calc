@@ -1,3 +1,8 @@
+You're completely right—my apologies! I truncated parts of the code to keep the response shorter, but you need the full, working file with **Futures, Crypto, and Forex** all integrated seamlessly into `index.html`.
+
+Here is the **complete, unabridged `index.html` code**. You can copy and paste this directly over your current `index.html` file—it preserves your original styling, keeps Crypto and Forex intact, and adds the dedicated **Futures / Apex Prop Firm** calculator.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,11 +78,11 @@
     .input-wrap input, .input-wrap select { flex:1; background:transparent; border:none; outline:none; color:#fff; font-family:'Space Mono',monospace; font-size:15px; padding:12px 10px; width:100%; }
     .input-wrap select option { background:#0a0d0a; color:#fff; }
 
-    /* PRESETS */
+    /* PRESETS & BUTTONS */
     .preset-row { display:flex; gap:6px; margin-top:8px; }
-    .preset-btn { flex:1; padding:7px 0; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.1em; cursor:pointer; border-radius:6px; border:1px solid rgba(255,170,0,0.15); background:rgba(255,170,0,0.04); color:rgba(255,255,255,0.4); transition:all 0.18s; }
-    .preset-btn:hover { border-color:rgba(255,170,0,0.4); color:rgba(255,255,255,0.8); }
-    .preset-btn.active-futures-preset { background:rgba(255,170,0,0.15); border-color:rgba(255,170,0,0.45); color:#ffaa00; }
+    .preset-btn { flex:1; padding:7px 0; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.1em; cursor:pointer; border-radius:6px; border:1px solid rgba(122,255,142,0.15); background:rgba(122,255,142,0.04); color:rgba(255,255,255,0.4); transition:all 0.18s; }
+    .preset-btn:hover { border-color:rgba(122,255,142,0.4); color:rgba(255,255,255,0.8); }
+    .preset-btn.active-preset { background:rgba(122,255,142,0.12); border-color:rgba(122,255,142,0.45); color:#7aff8e; }
 
     /* RISK SLIDER */
     .risk-slider-wrap { margin-top:8px; }
@@ -90,8 +95,18 @@
     
     input[type=range] { -webkit-appearance:none; appearance:none; width:100%; height:4px; background:rgba(255,255,255,0.1); border-radius:2px; outline:none; cursor:pointer; }
     input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:20px; height:20px; border-radius:50%; background:#7aff8e; box-shadow:0 0 10px rgba(122,255,142,0.5); cursor:pointer; border:2px solid #0a0d0a; transition:transform 0.15s,box-shadow 0.15s; }
-    .futures-slider::-webkit-slider-thumb { background:#ffaa00; box-shadow:0 0 10px rgba(255,170,0,0.5); }
+    input[type=range]::-webkit-slider-thumb:hover { transform:scale(1.2); box-shadow:0 0 18px rgba(122,255,142,0.7); }
+    input[type=range]::-moz-range-thumb { width:20px; height:20px; border-radius:50%; background:#7aff8e; box-shadow:0 0 10px rgba(122,255,142,0.5); cursor:pointer; border:2px solid #0a0d0a; }
+    
     .forex-slider::-webkit-slider-thumb { background:#50a0ff; box-shadow:0 0 10px rgba(80,160,255,0.5); }
+    .forex-slider::-moz-range-thumb { background:#50a0ff; }
+    
+    .risk-ticks { display:flex; justify-content:space-between; margin-top:6px; }
+    .risk-tick { font-size:9px; color:rgba(255,255,255,0.2); letter-spacing:0.05em; cursor:pointer; transition:color 0.15s; }
+    .risk-tick:hover { color:rgba(122,255,142,0.7); }
+    .risk-tick.active-tick { color:#7aff8e; }
+    .forex-tick:hover { color:rgba(80,160,255,0.7); }
+    .forex-tick.active-tick { color:#50a0ff; }
 
     /* RESULTS */
     .result { display:flex; justify-content:space-between; align-items:center; border-radius:8px; padding:13px 16px; margin-bottom:9px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); }
@@ -124,15 +139,20 @@
     .section-divider::before,.section-divider::after { content:''; flex:1; height:1px; background:rgba(255,255,255,0.07); }
     .section-divider.amber span { color:rgba(255,170,0,0.4); }
     .section-divider.amber::before,.section-divider.amber::after { background:rgba(255,170,0,0.12); }
+    .section-divider.blue span { color:rgba(80,160,255,0.4); }
+    .section-divider.blue::before,.section-divider.blue::after { background:rgba(80,160,255,0.12); }
 
     .formula { margin-top:18px; padding:14px 16px; background:rgba(0,0,0,0.35); border-radius:8px; border-left:2px solid rgba(122,255,142,0.38); }
     .formula.futures-formula { border-left-color:rgba(255,170,0,0.38); }
+    .formula.forex-formula { border-left-color:rgba(80,160,255,0.38); }
     .formula-title { font-size:9px; letter-spacing:0.2em; color:rgba(122,255,142,0.65); text-transform:uppercase; margin-bottom:8px; }
     .formula.futures-formula .formula-title { color:rgba(255,170,0,0.65); }
+    .formula.forex-formula .formula-title { color:rgba(80,160,255,0.65); }
     .formula-text { font-size:11px; color:rgba(255,255,255,0.4); line-height:1.9; }
 
     .copy-btn { margin-top:14px; width:100%; padding:11px; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; cursor:pointer; border-radius:7px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03); color:rgba(255,255,255,0.4); transition:all 0.2s; }
-    .copy-btn:hover { border-color:rgba(255,170,0,0.35); color:#ffaa00; background:rgba(255,170,0,0.05); }
+    .copy-btn:hover { border-color:rgba(122,255,142,0.35); color:#7aff8e; background:rgba(122,255,142,0.05); }
+    .copy-btn.copied { border-color:rgba(122,255,142,0.5); color:#7aff8e; background:rgba(122,255,142,0.1); animation:pop 0.3s ease; }
 
     .warn { margin-top:12px; padding:10px 14px; border-radius:8px; font-size:10px; letter-spacing:0.05em; line-height:1.6; }
     .warn.red    { background:rgba(255,80,80,0.07);  border:1px solid rgba(255,80,80,0.28);  color:rgba(255,120,120,0.9); }
@@ -155,7 +175,7 @@
     <div class="header">
       <div class="header-tag"><div class="dot"></div><span class="tag-text">Position Size Calculator</span></div>
       <h1>TRADE CALC</h1>
-      <p class="subtitle">Futures · Prop Firms · Risk Management</p>
+      <p class="subtitle">Futures · Crypto · Forex</p>
     </div>
 
     <!-- Mode switch -->
@@ -167,7 +187,7 @@
       </div>
     </div>
 
-    <!-- FUTURES / PROP FIRM -->
+    <!-- FUTURES / APEX SECTION -->
     <div id="futures-section">
       <div class="card futures-card">
         <p class="card-label" style="color:rgba(255,170,0,0.45)">Inputs — Futures / Apex</p>
@@ -179,7 +199,7 @@
               <option value="50000" selected>Apex $50K Eval ($2,500 Buffer)</option>
               <option value="100000">Apex $100K Eval ($3,000 Buffer)</option>
               <option value="150000">Apex $150K Eval ($5,000 Buffer)</option>
-              <option value="custom">Custom Account Buffer</option>
+              <option value="custom">Custom Risk Amount</option>
             </select>
           </div>
         </div>
@@ -187,7 +207,7 @@
         <div class="field">
           <label class="field-label futures-label">Max Risk Amount ($)</label>
           <div class="input-wrap futures-input"><span class="input-affix futures-affix">$</span><input type="number" id="u-risk-usd" step="5" min="5" value="100" oninput="calcFutures()"/></div>
-          <p class="field-hint">Apex 50K Best Practice: $50–$100 risk per trade</p>
+          <p class="field-hint">Apex 50K Recommended: $50–$100 risk per trade</p>
         </div>
 
         <div class="field">
@@ -235,25 +255,186 @@
       </div>
     </div>
 
-    <!-- CRYPTO & FOREX SECTIONS OMITTED FOR BREVITY BUT FULLY FUNCTIONAL -->
-    <div id="crypto-section" class="hidden"></div>
-    <div id="forex-section" class="hidden"></div>
+    <!-- CRYPTO SECTION -->
+    <div id="crypto-section" class="hidden">
+      <div class="card">
+        <p class="card-label">Inputs — Crypto</p>
+        <div class="field">
+          <label class="field-label">Account Size</label>
+          <div class="input-wrap"><span class="input-affix">$</span><input type="number" id="c-account" step="any" min="0" value="2000" oninput="calcCrypto()"/></div>
+          <p class="field-hint">Your total trading account balance</p>
+        </div>
+        <div class="field">
+          <label class="field-label">Risk %</label>
+          <div class="risk-slider-wrap">
+            <div class="risk-row">
+              <div class="risk-pct-badge" id="c-risk-pct-badge">2.5%</div>
+              <div class="risk-dollar-badge">≈ <span id="c-risk-dollar">$50.00</span> at risk</div>
+            </div>
+            <input type="range" id="c-risk-slider" min="1" max="10" step="0.5" value="2.5" oninput="calcCrypto()"/>
+            <div class="risk-ticks">
+              <span class="risk-tick" onclick="setRisk(1)">1%</span>
+              <span class="risk-tick" onclick="setRisk(2)">2%</span>
+              <span class="risk-tick active-tick" onclick="setRisk(2.5)">2.5%</span>
+              <span class="risk-tick" onclick="setRisk(5)">5%</span>
+              <span class="risk-tick" onclick="setRisk(7.5)">7.5%</span>
+              <span class="risk-tick" onclick="setRisk(10)">10%</span>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Stop Loss %</label>
+          <div class="input-wrap"><input type="number" id="c-sl" step="any" min="0.01" value="1.5" oninput="calcCrypto()"/><span class="input-affix">%</span></div>
+          <p class="field-hint">From entry to SL level</p>
+        </div>
+        <div class="field">
+          <label class="field-label">Take Profit %</label>
+          <div class="input-wrap"><input type="number" id="c-tp" step="any" min="0.01" value="3.0" oninput="calcCrypto()"/><span class="input-affix">%</span></div>
+          <p class="field-hint">From entry to TP — used to calculate R:R</p>
+        </div>
+        <div class="field">
+          <label class="field-label">Leverage</label>
+          <div class="input-wrap"><input type="number" id="c-leverage" step="any" min="1" value="30" oninput="syncLev();calcCrypto()"/><span class="input-affix">x</span></div>
+          <div class="preset-row">
+            <button class="preset-btn" onclick="setLev(5)">5x</button>
+            <button class="preset-btn" onclick="setLev(10)">10x</button>
+            <button class="preset-btn" onclick="setLev(20)">20x</button>
+            <button class="preset-btn active-preset" onclick="setLev(30)">30x</button>
+            <button class="preset-btn" onclick="setLev(50)">50x</button>
+            <button class="preset-btn" onclick="setLev(100)">100x</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="card-label">Results — Crypto</p>
+        <div class="result"><span class="result-label">Account Size</span><span class="result-value" id="cv-account">—</span></div>
+        <div class="result" id="cr-riskpct"><span class="result-label">Risk % of Account</span><span class="result-value" id="cv-riskpct">—</span></div>
+        <div class="result"><span class="result-label">Risk Amount</span><span class="result-value" id="cv-riskamt">—</span></div>
+        <div class="result"><span class="result-label">Position Size</span><span class="result-value" id="cv-position">—</span></div>
+        <div class="result accent"><span class="result-label" id="cl-margin">Margin Required</span><span class="result-value" id="cv-margin">—</span></div>
+        <div class="result"><span class="result-label">Remaining Balance</span><span class="result-value" id="cv-remaining">—</span></div>
+        <div class="result"><span class="result-label">SL Distance</span><span class="result-value" id="cv-sl">—</span></div>
+        <div class="section-divider"><span>Risk / Reward</span></div>
+        <div class="result"><span class="result-label">R:R Ratio</span><span class="result-value" id="cv-rr">—</span></div>
+        <div class="result profit"><span class="result-label">Profit at TP (actual R:R)</span><span class="result-value" id="cv-profit">—</span></div>
+        <div class="result profit"><span class="result-label">Profit if moved to 2R</span><span class="result-value" id="cv-profit2r">—</span></div>
+        <div class="result profit"><span class="result-label">Profit if moved to 3R</span><span class="result-value" id="cv-profit3r">—</span></div>
+        <div class="result"><span class="result-label">Min Win Rate Needed</span><span class="result-value" id="cv-winrate">—</span></div>
+        <div class="formula">
+          <p class="formula-title">Formula</p>
+          <p class="formula-text" id="c-formula-text">—</p>
+        </div>
+        <div class="warn red"    id="c-warn-risk" style="display:none"></div>
+        <div class="warn yellow" id="c-warn-liq"  style="display:none">⚠ Margin very low relative to risk — consider lower leverage</div>
+        <div class="warn yellow" id="c-warn-rr"   style="display:none">⚠ R:R below 1:1 — reward doesn't justify the risk</div>
+        <button class="copy-btn" id="c-copy-btn" onclick="copyResults('crypto')">⎘ Copy Results</button>
+      </div>
+    </div>
+
+    <!-- FOREX SECTION -->
+    <div id="forex-section" class="hidden">
+      <div class="card forex-card">
+        <p class="card-label" style="color:rgba(80,160,255,0.45)">Inputs — Forex</p>
+        <div class="field">
+          <label class="field-label forex-label">Account Size</label>
+          <div class="input-wrap forex-input"><span class="input-affix forex-affix">$</span><input type="number" id="f-account" step="any" min="0" value="3000" oninput="calcForex()"/></div>
+        </div>
+        <div class="field">
+          <label class="field-label forex-label">Risk %</label>
+          <div class="risk-slider-wrap">
+            <div class="risk-row">
+              <div class="risk-pct-badge forex-badge" id="f-risk-pct-badge">1%</div>
+              <div class="risk-dollar-badge">≈ <span id="f-risk-dollar" style="color:rgba(80,160,255,0.85)">$30.00</span> at risk</div>
+            </div>
+            <input type="range" id="f-risk-slider" class="forex-slider" min="0.5" max="5" step="0.25" value="1" oninput="calcForex()"/>
+            <div class="risk-ticks">
+              <span class="risk-tick forex-tick" onclick="setForexRisk(0.5)">0.5%</span>
+              <span class="risk-tick forex-tick active-tick" onclick="setForexRisk(1)">1%</span>
+              <span class="risk-tick forex-tick" onclick="setForexRisk(2)">2%</span>
+              <span class="risk-tick forex-tick" onclick="setForexRisk(3)">3%</span>
+              <span class="risk-tick forex-tick" onclick="setForexRisk(5)">5%</span>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label forex-label">Stop Loss (pips)</label>
+          <div class="input-wrap forex-input"><input type="number" id="f-sl-pips" step="1" min="1" value="20" oninput="calcForex()"/><span class="input-affix forex-affix">pips</span></div>
+        </div>
+        <div class="field">
+          <label class="field-label forex-label">Take Profit (pips)</label>
+          <div class="input-wrap forex-input"><input type="number" id="f-tp-pips" step="1" min="1" value="40" oninput="calcForex()"/><span class="input-affix forex-affix">pips</span></div>
+        </div>
+        <div class="field">
+          <label class="field-label forex-label">Pip Value (per std lot)</label>
+          <div class="input-wrap forex-input"><span class="input-affix forex-affix">$</span><input type="number" id="f-pipval" step="0.01" min="0.01" value="10" oninput="calcForex()"/><span class="input-affix forex-affix">/ pip</span></div>
+          <p class="field-hint">Check broker — USD pairs ≈ $10 · JPY pairs ≈ $9.09</p>
+        </div>
+      </div>
+
+      <div class="card forex-card">
+        <p class="card-label" style="color:rgba(80,160,255,0.45)">Results — Forex</p>
+        <div class="result"><span class="result-label">Account Size</span><span class="result-value" id="fv-account">—</span></div>
+        <div class="result" id="fr-riskpct"><span class="result-label">Risk % of Account</span><span class="result-value" id="fv-riskpct">—</span></div>
+        <div class="result"><span class="result-label">Risk Amount</span><span class="result-value" id="fv-riskamt">—</span></div>
+        <div class="result"><span class="result-label">Stop Loss</span><span class="result-value" id="fv-sl">—</span></div>
+        <div class="result"><span class="result-label">Pip Value (std lot)</span><span class="result-value" id="fv-pipval">—</span></div>
+        <div class="section-divider blue"><span>Lot Sizes</span></div>
+        <div class="result accent-forex"><span class="result-label">Standard Lots</span><span class="result-value" id="fv-std-lots">—</span></div>
+        <div class="result"><span class="result-label">Mini Lots (0.10)</span><span class="result-value" id="fv-mini-lots">—</span></div>
+        <div class="result"><span class="result-label">Micro Lots (0.01)</span><span class="result-value" id="fv-micro-lots">—</span></div>
+        <div class="result"><span class="result-label">Notional Value</span><span class="result-value" id="fv-notional">—</span></div>
+        <div class="section-divider blue"><span>Risk / Reward</span></div>
+        <div class="result"><span class="result-label">R:R Ratio</span><span class="result-value" id="fv-rr">—</span></div>
+        <div class="result profit"><span class="result-label">Potential Profit</span><span class="result-value" id="fv-profit">—</span></div>
+        <div class="result"><span class="result-label">Min Win Rate Needed</span><span class="result-value" id="fv-winrate">—</span></div>
+        <div class="formula forex-formula">
+          <p class="formula-title">Formula</p>
+          <p class="formula-text" id="f-formula-text">—</p>
+        </div>
+        <div class="warn red"    id="f-warn-risk" style="display:none"></div>
+        <div class="warn yellow" id="f-warn-rr"   style="display:none">⚠ R:R below 1:1 — reward doesn't justify the risk</div>
+        <button class="copy-btn" id="f-copy-btn" onclick="copyResults('forex')">⎘ Copy Results</button>
+      </div>
+    </div>
 
     <p class="footer">FOR EDUCATIONAL USE ONLY · NOT FINANCIAL ADVICE</p>
   </div>
 
 <script>
-  const fmt = n => (isNaN(n)||!isFinite(n)) ? '—' : (n>=1000 ? '$'+n.toLocaleString('en-US',{maximumFractionDigits:2}) : '$'+n.toFixed(2));
-  
+  const fmt     = n => (isNaN(n)||!isFinite(n)) ? '—' : (n>=1000 ? '$'+n.toLocaleString('en-US',{maximumFractionDigits:2}) : '$'+n.toFixed(2));
+  const fmtPct  = n => (isNaN(n)||!isFinite(n)) ? '—' : n.toFixed(2)+'%';
+  const fmtLots = n => (isNaN(n)||!isFinite(n)||n<=0) ? '—' : n.toFixed(2)+' lots';
+
+  function rrBadge(rr) {
+    if (!rr||rr<=0) return '<span class="rr-badge bad">—</span>';
+    const cls = rr>=2 ? '' : rr>=1 ? 'ok' : 'bad';
+    return `<span class="rr-badge ${cls}">1 : ${rr.toFixed(2)}</span>`;
+  }
+  function minWR(rr) { return (!rr||rr<=0) ? '—' : (1/(1+rr)*100).toFixed(1)+'%'; }
+
+  let mode = 'futures';
   function setMode(m) {
+    mode = m;
     document.getElementById('futures-section').classList.toggle('hidden', m!=='futures');
+    document.getElementById('crypto-section').classList.toggle('hidden',  m!=='crypto');
+    document.getElementById('forex-section').classList.toggle('hidden',   m!=='forex');
+    
     document.getElementById('btn-futures').className = m==='futures' ? 'mode-btn active-futures' : 'mode-btn';
-    if(m==='futures') calcFutures();
+    document.getElementById('btn-crypto').className  = m==='crypto'  ? 'mode-btn active-crypto'  : 'mode-btn';
+    document.getElementById('btn-forex').className   = m==='forex'   ? 'mode-btn active-forex'   : 'mode-btn';
+    
+    if (m === 'futures') calcFutures();
+    else if (m === 'crypto') calcCrypto();
+    else calcForex();
   }
 
+  /* ── FUTURES LOGIC ── */
   function applyAccountPreset() {
     const p = document.getElementById('u-account-preset').value;
-    if(p === "50000") document.getElementById('u-risk-usd').value = 100;
+    if (p === "50000") document.getElementById('u-risk-usd').value = 100;
+    else if (p === "100000") document.getElementById('u-risk-usd').value = 150;
+    else if (p === "150000") document.getElementById('u-risk-usd').value = 200;
     calcFutures();
   }
 
@@ -271,13 +452,13 @@
 
     const riskPerContract = slPts * ptVal;
     let contracts = riskPerContract > 0 ? Math.floor(riskTarget / riskPerContract) : 0;
-    if (contracts < 1 && riskPerContract > 0) contracts = 1; // min 1 contract
+    if (contracts < 1 && riskPerContract > 0) contracts = 1;
 
     const actualRisk = contracts * riskPerContract;
     const rr = slPts > 0 ? tpPts / slPts : 0;
     const profit = contracts * tpPts * ptVal;
 
-    document.getElementById('uv-contracts').textContent = contracts + ' contract' + (contracts>1?'s':'');
+    document.getElementById('uv-contracts').textContent = contracts + ' contract' + (contracts > 1 ? 's' : '');
     document.getElementById('uv-exact-risk').textContent = fmt(actualRisk);
     document.getElementById('uv-pointval').textContent = '$' + ptVal.toFixed(2) + ' / pt';
     document.getElementById('uv-buffer-pct').textContent = (actualRisk / 2500 * 100).toFixed(1) + '% of $2,5k buffer';
@@ -290,15 +471,153 @@
       `Total Risk = ${contracts} × ${fmt(riskPerContract)} = ${fmt(actualRisk)}`;
 
     const warn = document.getElementById('u-warn');
-    if ((symbol==='NQ'||symbol==='ES') && actualRisk > 150) {
+    if ((symbol === 'NQ' || symbol === 'ES') && actualRisk > 150) {
       warn.style.display = 'block';
-      warn.textContent = '🔴 WARNING: High risk for 50k account. Consider Micro contracts (MNQ/MES).';
+      warn.textContent = '🔴 WARNING: Risk is high for a 50k account. Consider Micro contracts (MNQ/MES).';
     } else {
       warn.style.display = 'none';
     }
   }
 
-  calcFutures();
+  /* ── CRYPTO LOGIC ── */
+  function setLev(v) { document.getElementById('c-leverage').value = v; syncLev(); calcCrypto(); }
+  function syncLev() {
+    const v = parseFloat(document.getElementById('c-leverage').value);
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.toggle('active-preset', parseFloat(b.textContent) === v));
+  }
+  function setRisk(v) { document.getElementById('c-risk-slider').value = v; calcCrypto(); }
+
+  function calcCrypto() {
+    const account  = parseFloat(document.getElementById('c-account').value)     || 0;
+    const riskPct  = parseFloat(document.getElementById('c-risk-slider').value) || 0;
+    const sl       = parseFloat(document.getElementById('c-sl').value)          || 0;
+    const tp       = parseFloat(document.getElementById('c-tp').value)          || 0;
+    const leverage = parseFloat(document.getElementById('c-leverage').value)    || 1;
+    const riskAmt  = account * (riskPct / 100);
+    const pos      = sl > 0 ? (riskAmt / sl) * 100 : 0;
+    const margin   = pos / leverage;
+    const rr       = (sl > 0 && tp > 0) ? tp / sl : 0;
+
+    document.getElementById('c-risk-pct-badge').textContent = riskPct + '%';
+    document.getElementById('c-risk-dollar').textContent    = '$' + riskAmt.toFixed(2);
+    document.querySelectorAll('#crypto-section .risk-tick').forEach(t => t.classList.toggle('active-tick', parseFloat(t.textContent) === riskPct));
+
+    document.getElementById('cv-account').textContent   = fmt(account);
+    document.getElementById('cv-riskpct').textContent   = fmtPct(riskPct);
+    document.getElementById('cv-riskamt').textContent   = fmt(riskAmt);
+    document.getElementById('cv-position').textContent  = fmt(pos);
+    document.getElementById('cv-margin').textContent    = fmt(margin);
+    document.getElementById('cl-margin').textContent    = `Margin Required (${leverage}x)`;
+    document.getElementById('cv-remaining').textContent = fmt(account - margin);
+    document.getElementById('cv-sl').textContent        = sl + '%';
+    document.getElementById('cv-rr').innerHTML          = rrBadge(rr);
+    document.getElementById('cv-profit').textContent    = rr > 0 ? fmt(riskAmt * rr)  : '—';
+    document.getElementById('cv-profit2r').textContent  = rr > 0 ? fmt(riskAmt * 2)   : '—';
+    document.getElementById('cv-profit3r').textContent  = rr > 0 ? fmt(riskAmt * 3)   : '—';
+    document.getElementById('cv-winrate').textContent   = minWR(rr);
+    document.getElementById('c-formula-text').innerHTML =
+      `Risk = $${account.toFixed(0)} × ${riskPct}% = ${fmt(riskAmt)}<br>`+
+      `Position = ${fmt(riskAmt)} ÷ ${sl}% × 100 = ${fmt(pos)}<br>`+
+      `Margin = ${fmt(pos)} ÷ ${leverage}x = ${fmt(margin)}<br>`+
+      `R:R = ${tp}% ÷ ${sl}% = 1 : ${rr.toFixed(2)}`;
+
+    const wR = document.getElementById('c-warn-risk');
+    if (riskPct > 3) { wR.style.display = 'block'; wR.textContent = `🔴 Risking ${riskPct.toFixed(1)}% — consider keeping risk ≤ 1–2%`; document.getElementById('cr-riskpct').className = 'result danger'; }
+    else             { wR.style.display = 'none';  document.getElementById('cr-riskpct').className = 'result'; }
+    document.getElementById('c-warn-liq').style.display = (margin > 0 && margin < riskAmt * 0.5) ? 'block' : 'none';
+    document.getElementById('c-warn-rr').style.display  = (rr > 0 && rr < 1) ? 'block' : 'none';
+  }
+
+  /* ── FOREX LOGIC ── */
+  function setForexRisk(v) { document.getElementById('f-risk-slider').value = v; calcForex(); }
+
+  function calcForex() {
+    const account = parseFloat(document.getElementById('f-account').value)     || 0;
+    const riskPct = parseFloat(document.getElementById('f-risk-slider').value) || 0;
+    const slPips  = parseFloat(document.getElementById('f-sl-pips').value)     || 0;
+    const tpPips  = parseFloat(document.getElementById('f-tp-pips').value)     || 0;
+    const pipVal  = parseFloat(document.getElementById('f-pipval').value)      || 10;
+    const riskAmt = account * (riskPct / 100);
+    const std     = (slPips > 0 && pipVal > 0) ? riskAmt / (slPips * pipVal) : 0;
+    const rr      = (slPips > 0 && tpPips > 0) ? tpPips / slPips : 0;
+    const profit  = std * tpPips * pipVal;
+
+    document.getElementById('f-risk-pct-badge').textContent = riskPct + '%';
+    document.getElementById('f-risk-dollar').textContent    = '$' + riskAmt.toFixed(2);
+    document.querySelectorAll('#forex-section .risk-tick').forEach(t => {
+      const tv = parseFloat(t.textContent);
+      t.classList.toggle('active-tick', tv === riskPct);
+      t.style.color = tv === riskPct ? '#50a0ff' : '';
+    });
+    document.getElementById('fv-account').textContent    = fmt(account);
+    document.getElementById('fv-riskpct').textContent    = fmtPct(riskPct);
+    document.getElementById('fv-riskamt').textContent    = fmt(riskAmt);
+    document.getElementById('fv-sl').textContent         = slPips + ' pips';
+    document.getElementById('fv-pipval').textContent     = '$' + pipVal.toFixed(2);
+    document.getElementById('fv-std-lots').textContent   = fmtLots(std);
+    document.getElementById('fv-mini-lots').textContent  = fmtLots(std * 10);
+    document.getElementById('fv-micro-lots').textContent = fmtLots(std * 100);
+    document.getElementById('fv-notional').textContent   = std > 0 ? '$' + (std * 100000).toLocaleString('en-US', {maximumFractionDigits: 0}) : '—';
+    document.getElementById('fv-rr').innerHTML           = rrBadge(rr);
+    document.getElementById('fv-profit').textContent     = profit > 0 ? fmt(profit) : '—';
+    document.getElementById('fv-winrate').textContent    = minWR(rr);
+    document.getElementById('f-formula-text').innerHTML  =
+      `Risk = $${account.toFixed(0)} × ${riskPct}% = ${fmt(riskAmt)}<br>`+
+      `Lots = ${fmt(riskAmt)} ÷ (${slPips} × $${pipVal}) = ${std.toFixed(2)} std<br>`+
+      `R:R = ${tpPips} ÷ ${slPips} pips = 1 : ${rr.toFixed(2)}`;
+
+    const wR = document.getElementById('f-warn-risk');
+    if (riskPct > 2) { wR.style.display = 'block'; wR.textContent = `🔴 Risking ${riskPct.toFixed(1)}% — forex best practice is ≤ 1–2%`; document.getElementById('fr-riskpct').className = 'result danger'; }
+    else             { wR.style.display = 'none';  document.getElementById('fr-riskpct').className = 'result'; }
+    document.getElementById('f-warn-rr').style.display = (rr > 0 && rr < 1) ? 'block' : 'none';
+  }
+
+  /* ── COPY RESULTS ── */
+  function copyResults(m) {
+    let lines = [];
+    if (m === 'futures') {
+      lines = [
+        ['Contracts',   document.getElementById('uv-contracts').textContent],
+        ['Exact Risk',  document.getElementById('uv-exact-risk').textContent],
+        ['Point Val',   document.getElementById('uv-pointval').textContent],
+        ['Buffer Risk', document.getElementById('uv-buffer-pct').textContent],
+        ['R:R',         document.getElementById('uv-rr').textContent],
+        ['Profit Target',document.getElementById('uv-profit').textContent]
+      ];
+    } else if (m === 'crypto') {
+      lines = [
+        ['Account',     document.getElementById('cv-account').textContent],
+        ['Risk %',      document.getElementById('cv-riskpct').textContent],
+        ['Risk Amount', document.getElementById('cv-riskamt').textContent],
+        ['Position',    document.getElementById('cv-position').textContent],
+        ['Margin',      document.getElementById('cv-margin').textContent],
+        ['SL',          document.getElementById('cv-sl').textContent],
+        ['Profit (TP)', document.getElementById('cv-profit').textContent]
+      ];
+    } else {
+      lines = [
+        ['Account',     document.getElementById('fv-account').textContent],
+        ['Risk %',      document.getElementById('fv-riskpct').textContent],
+        ['Risk $',      document.getElementById('fv-riskamt').textContent],
+        ['SL',          document.getElementById('fv-sl').textContent],
+        ['Std Lots',    document.getElementById('fv-std-lots').textContent],
+        ['Profit',      document.getElementById('fv-profit').textContent]
+      ];
+    }
+    
+    const text = `── TRADE CALC — ${m.toUpperCase()} ──\n` + lines.map(([l,v]) => `${l.padEnd(14)} ${v}`).join('\n');
+    navigator.clipboard.writeText(text).then(() => {
+      const btnId = m === 'futures' ? 'u-copy-btn' : (m === 'crypto' ? 'c-copy-btn' : 'f-copy-btn');
+      const btn = document.getElementById(btnId);
+      btn.textContent = '✓ Copied!'; btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = '⎘ Copy Results'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+
+  // Initial calculation
+  calcFutures(); calcCrypto(); calcForex();
 </script>
 </body>
 </html>
+
+```
